@@ -13,8 +13,8 @@ int main(){
   write(fd, header, strlen(header));
   for(int i = 0; i < 1000; i++){
     for(int j = 0; j < 1000; j++){
-      pixel[0] = j % (i + 1);
-      pixel[1] = i % (j + 1);
+      pixel[0] = (j % (i + 1)) % 256;
+      pixel[1] = (i % (j + 1)) % 256;
       pixel[2] = 256 / ((i+1) * (j+1));
       snprintf(line, 20, "%d %d %d ", pixel[0], pixel[1], pixel[2]);
       write(fd, line, strlen(line));
